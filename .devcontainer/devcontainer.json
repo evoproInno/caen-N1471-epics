@@ -1,0 +1,34 @@
+{
+    "name": "epics-env",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/tmp/.ssh,type=bind,ro",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
+    ],
+    "workspaceFolder": "/root/${localWorkspaceFolderBasename}",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/root/${localWorkspaceFolderBasename},type=bind",
+    "runArgs": [
+        "--name=epics-env",
+        "--hostname=epicscontainer",
+        "--cap-add=SYS_PTRACE"
+    ],
+    "containerEnv": {
+        "DISPLAY": "unix:0"
+    },
+    "updateRemoteUserUID": false,
+    "overrideCommand": false,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "ms-python.python",
+                "ms-python.autopep8"
+            ],
+            "settings": {}
+        }
+    }
+}

@@ -1,0 +1,162 @@
+# Copyright (c) 2024 evopro Innovation
+
+Terminator = CR LF;
+
+# Module MONitor commands
+getModuleName {
+    out "$BD:\$1,CMD:MON,PAR:BDNAME";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getNumberOfChannels {
+    out "$BD:\$1,CMD:MON,PAR:BDNCH";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+getFirmwareRelease {
+    out "$BD:\$1,CMD:MON,PAR:BDFREL";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getSerialNumber {
+    out "$BD:\$1,CMD:MON,PAR:BDSNUM";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getInterlockStatus {
+    out "$BD:\$1,CMD:MON,PAR:BDILK";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getInterlockMode {
+    out "$BD:\$1,CMD:MON,PAR:BDILKM";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getControlMode {
+    out "$BD:\$1,CMD:MON,PAR:BDCTR";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getLocalBusTermination {
+    out "$BD:\$1,CMD:MON,PAR:BDTERM";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getBoardAlarm {
+    out "$BD:\$1,CMD:MON,PAR:BDALARM";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+# Module SET commands
+setInterlockMode {
+    out "$BD:\$1,CMD:SET,PAR:BDILKM,VAL:%(Module\$1:SetInterlockMode)s";
+    in "#BD:\$1,CMD:OK";
+}
+
+clearModuleAlarm {
+    out "$BD:\$1,CMD:SET,PAR:BDCLR";
+    in "#BD:\$1,CMD:OK";
+}
+
+# Channel MONintor commands
+getDrivenVoltage {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:VSET";
+    in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+getMonitoredVoltage {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:VMON";
+    in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+getDrivenCurrent {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:ISET";
+    in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+getMonitoredCurrent {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:IMON";
+    in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+getCurrentMonitoringRange {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:IMRANGE";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getMaxVoltage {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:MAXV";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+getRampUp {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:RUP";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+getRampDown {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:RDW";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+getTrip {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:TRIP";
+    in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+getPowerDownMode {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:PDWN";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getPolarity {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:POL";
+    in "#BD:\$1,CMD:OK,VAL:%s";
+}
+
+getStatus {
+    out "$BD:\$1,CMD:MON,CH:\$2,PAR:STAT";
+    in "#BD:\$1,CMD:OK,VAL:%d";
+}
+
+# Channel SET commands
+setDrivenVoltage {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:VSET,VAL:%(Module\$1:Ch\$2:SetDrivenVoltage)06.1f";
+    in "#BD:\$1,CMD:OK";
+}
+
+setDrivenCurrent {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:ISET,VAL:%(Module\$1:Ch\$2:SetDrivenCurrent)07.3f";
+    in "#BD:\$1,CMD:OK";
+}
+
+setMaxVoltage {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:MAXV,VAL:%(Module\$1:Ch\$2:SetMaxVoltage)04d";
+    in "#BD:\$1,CMD:OK";
+}
+
+setRampUp {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:RUP,VAL:%(Module\$1:Ch\$2:SetRampUp)03d";
+    in "#BD:\$1,CMD:OK";
+}
+
+setRampDown {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:RDW,VAL:%(Module\$1:Ch\$2:SetRampDown)03d";
+    in "#BD:\$1,CMD:OK";
+}
+
+setTrip {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:TRIP,VAL:%(Module\$1:Ch\$2:SetTrip)06.1f";
+    in "#BD:\$1,CMD:OK";
+}
+
+setPowerDownMode {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:PDWN,VAL:%(Module\$1:Ch\$2:SetPowerDownMode)s";
+    in "#BD:\$1,CMD:OK";
+}
+
+turnOnOff {
+    out "$BD:\$1,CMD:SET,CH:\$2,PAR:%(Module\$1:Ch\$2:TurnOnOff)s";
+    in "#BD:\$1,CMD:OK";
+}

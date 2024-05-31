@@ -1,0 +1,53 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(ao, "Module$(ADDR):SlowLoopPeriod") {
+    field(VAL, 10)                                          # the configurable period of the slow loop in seconds
+}
+
+record(calcout, "Module$(ADDR):SlowLoopStep") {
+    field(C,    "0")                                        # start internal counter value at 0
+    field(SCAN, "1 second")                                 # process every second
+    field(INPA, "Module$(ADDR):SlowLoopPeriod")             # get the period as an input
+    field(CALC, "A == C ? 1 : C + 1")                       # update the internal counter value: increment by 1 or start over
+    field(OUT,  "Module$(ADDR):SlowLoopStep.C")             # put the new counter value back into the C field
+    field(FLNK, "Module$(ADDR):ActivateSlowLoop.PROC PP")   # continue by processing the ActivateSlowLoop record
+}
+
+record(calcout, "Module$(ADDR):ActivateSlowLoop") {
+    field(SCAN, "Passive")                                  # this record will be processed after the previous due to its forward link (FLKN)
+    field(INPA, "Module$(ADDR):SlowLoopPeriod")             # get the period value as input A
+    field(INPB, "Module$(ADDR):SlowLoopStep")               # get the loop counter as input B
+    field(CALC, "A == B ? 1 : 0")                           # is the two inputs are equal (one whole period has elapsed), make the value 1
+    field(OOPT, "When Non-zero")                            # the output is only written if its non-zero. For now it's only possible when the value is 1.
+    field(OUT,  "Module$(ADDR):FireSlowTrigger.PROC PP")    # when the output is written, it will cause another record to be processed
+}
+
+record(event, "Module$(ADDR):FireSlowTrigger") {
+    field(VAL, "Module$(ADDR):SlowTrigger")                 # fire this event on processing, this is what periodic reading records are listening to
+}
+
+record(ao, "Module$(ADDR):FastLoopPeriod") {
+    field(VAL, 2)
+}
+
+record(calcout, "Module$(ADDR):FastLoopStep") {
+    field(SCAN, "1 second")
+    field(INPA, "Module$(ADDR):FastLoopPeriod")
+    field(C,    "0")
+    field(CALC, "A == C ? 1 : C + 1")
+    field(OUT,  "Module$(ADDR):FastLoopStep.C")
+    field(FLNK, "Module$(ADDR):ActivateFastLoop.PROC PP")
+}
+
+record(calcout, "Module$(ADDR):ActivateFastLoop") {
+    field(SCAN, "Passive")
+    field(INPA, "Module$(ADDR):FastLoopPeriod")
+    field(INPB, "Module$(ADDR):FastLoopStep")
+    field(CALC, "A == B ? 1 : 0")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "Module$(ADDR):FireFastTrigger.PROC PP")
+}
+
+record(event, "Module$(ADDR):FireFastTrigger") {
+    field(VAL, "Module$(ADDR):FastTrigger")
+}

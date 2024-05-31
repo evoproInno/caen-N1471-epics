@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-04-17 13:28:46 by root-->
+<display version="2.0.0">
+  <name>Channel</name>
+  <width>1060</width>
+  <height>1000</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>Channel $(Ch)</text>
+    <x>20</x>
+    <y>10</y>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="20.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>VSET</text>
+    <x>20</x>
+    <y>120</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>Module00:Ch$(Ch):DrivenVoltage</pv_name>
+    <x>140</x>
+    <y>120</y>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner</name>
+    <pv_name>Module00:Ch$(Ch):SetDrivenVoltage</pv_name>
+    <x>280</x>
+    <y>120</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>ISET</text>
+    <x>20</x>
+    <y>290</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>Module00:Ch$(Ch):DrivenCurrent</pv_name>
+    <x>140</x>
+    <y>290</y>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner_1</name>
+    <pv_name>Module00:Ch$(Ch):SetDrivenCurrent</pv_name>
+    <x>280</x>
+    <y>290</y>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button</name>
+    <pv_name>Module00:Ch$(Ch):TurnOnOff</pv_name>
+    <x>280</x>
+    <y>80</y>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>Module00:Ch$(Ch):Disabled</pv_name>
+    <x>350</x>
+    <y>10</y>
+    <off_color>
+      <color red="204" green="204" blue="204">
+      </color>
+    </off_color>
+    <on_color>
+      <color red="255" green="0" blue="0">
+      </color>
+    </on_color>
+  </widget>
+  <widget type="meter" version="3.0.0">
+    <name>Meter</name>
+    <pv_name>pva://Module00:Ch$(Ch):MonitoredVoltage</pv_name>
+    <x>140</x>
+    <y>150</y>
+    <maximum>8000.0</maximum>
+  </widget>
+  <widget type="meter" version="3.0.0">
+    <name>Meter_1</name>
+    <pv_name>Module00:Ch$(Ch):MonitoredCurrent</pv_name>
+    <x>150</x>
+    <y>320</y>
+    <maximum>8000.0</maximum>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>RAMP UP</text>
+    <x>20</x>
+    <y>450</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>Module00:Ch$(Ch):RampUp</pv_name>
+    <x>140</x>
+    <y>450</y>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner_2</name>
+    <pv_name>Module00:Ch$(Ch):SetRampUp</pv_name>
+    <x>280</x>
+    <y>450</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>RAMP DOWN</text>
+    <x>20</x>
+    <y>470</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_4</name>
+    <pv_name>Module00:Ch$(Ch):RampDown</pv_name>
+    <x>140</x>
+    <y>470</y>
+  </widget>
+  <widget type="spinner" version="2.0.0">
+    <name>Spinner_3</name>
+    <pv_name>Module00:Ch$(Ch):SetRampDown</pv_name>
+    <x>280</x>
+    <y>470</y>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button</name>
+    <pv_name>Module00:Ch$(Ch):SetPowerDownMode</pv_name>
+    <x>280</x>
+    <y>500</y>
+    <items>
+      <item>RAMP</item>
+      <item>KILL</item>
+    </items>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_5</name>
+    <pv_name>Module00:Ch$(Ch):PowerDownMode</pv_name>
+    <x>140</x>
+    <y>510</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>POWER DOWN MODE</text>
+    <x>20</x>
+    <y>510</y>
+    <height>33</height>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_1</name>
+    <pv_name>pv://Module00:Ch$(Ch):OnOff</pv_name>
+    <x>350</x>
+    <y>40</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Disabled</text>
+    <x>230</x>
+    <y>10</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>Status</text>
+    <x>230</x>
+    <y>40</y>
+  </widget>
+</display>

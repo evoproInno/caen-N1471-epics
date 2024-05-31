@@ -1,0 +1,18 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(bo, "Module$(ADDR):SetInterlockMode") {
+    field(DESC, "Set interlock mode for Mdl$(ADDR)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setInterlockMode($(ADDR)) $(PN)")
+    field(SCAN, "Passive")
+    field(ZNAM, "OPEN")
+    field(ONAM, "CLOSED")
+}
+
+record(bo, "Module$(ADDR):ClearAlarm") {
+    field(DESC, "Clear alarm for Mdl$(ADDR)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto clearModuleAlarm($(ADDR)) $(PN)")
+    field(SCAN, "Passive")
+}
+

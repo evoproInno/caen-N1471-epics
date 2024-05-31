@@ -1,0 +1,3 @@
+include "stream.dbd"
+include "asyn.dbd"
+registrar(drvAsynSerialPortRegisterCommands)

@@ -1,0 +1,18 @@
+# Copyright (c) 2024 evopro Innovation
+
+file "db/caen-N1471-statusbit.template" {
+	{ R="Ch$(CH):OnOff", SOURCE="Ch$(CH):Status", INDEX="0" }
+	{ R="Ch$(CH):RampUpStatus", SOURCE="Ch$(CH):Status", INDEX="1" }
+	{ R="Ch$(CH):RampDownStatus", SOURCE="Ch$(CH):Status", INDEX="2" }
+	{ R="Ch$(CH):OverCurrent", SOURCE="Ch$(CH):Status", INDEX="3" }
+	{ R="Ch$(CH):OverVoltage", SOURCE="Ch$(CH):Status", INDEX="4" }
+	{ R="Ch$(CH):UnderVoltage", SOURCE="Ch$(CH):Status", INDEX="5" }
+	{ R="Ch$(CH):MaxVoltageProtection", SOURCE="Ch$(CH):Status", INDEX="6" }
+	{ R="Ch$(CH):Tripped", SOURCE="Ch$(CH):Status", INDEX="7" }
+	{ R="Ch$(CH):OverPower", SOURCE="Ch$(CH):Status", INDEX="8" }
+	{ R="Ch$(CH):OverTemperature", SOURCE="Ch$(CH):Status", INDEX="9" }
+	{ R="Ch$(CH):Disabled", SOURCE="Ch$(CH):Status", INDEX="10" }
+	{ R="Ch$(CH):Killed", SOURCE="Ch$(CH):Status", INDEX="11" }
+	{ R="Ch$(CH):Interlock", SOURCE="Ch$(CH):Status", INDEX="12" }
+	{ R="Ch$(CH):CalibrationError", SOURCE="Ch$(CH):Status", INDEX="13" }
+}

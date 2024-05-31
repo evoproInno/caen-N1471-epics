@@ -1,0 +1,129 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(ai, "Module$(ADDR):Ch$(CH):DrivenVoltage") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getDrivenVoltage($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "V")
+    field(PREC, 1)
+}
+
+record(ai, "Module$(ADDR):Ch$(CH):MonitoredVoltage") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getMonitoredVoltage($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "V")
+    field(PREC, 1)
+}
+
+record(ai, "Module$(ADDR):Ch$(CH):DrivenCurrent") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getDrivenCurrent($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+
+record(ai, "Module$(ADDR):Ch$(CH):MonitoredCurrent") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getMonitoredCurrent($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+
+record(bi, "Module$(ADDR):Ch$(CH):CurrentMonitoringRange") {
+    # IMON RANGE is an optional feature in some CAEN devices.
+    # If present it can be changed using the serial control, but we choose to not support this in our IOC.
+    # So this is a fixed value, the IOC only reads it on init.
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getCurrentMonitoringRange($(ADDR), $(CH)) $(PN)")
+    field(ZNAM, "LOW")
+    field(ONAM, "HIGH")
+}
+
+record(longin, "Module$(ADDR):Ch$(CH):MaxVoltage") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getMaxVoltage($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "V")
+}
+
+record(longin, "Module$(ADDR):Ch$(CH):RampUp") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getRampUp($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "V/s")
+}
+
+record(longin, "Module$(ADDR):Ch$(CH):RampDown") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getRampDown($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "V/s")
+}
+
+record(ai, "Module$(ADDR):Ch$(CH):Trip") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getTrip($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(EGU, "s")
+    field(PREC, 1)
+}
+
+record(bi, "Module$(ADDR):Ch$(CH):PowerDownMode") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getPowerDownMode($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+
+record(bi, "Module$(ADDR):Ch$(CH):Polarity") {
+    # The polarity can be changed by manually changing the placement of a diode box on the device.
+    # That action probably requires the module to be turned off.
+    # So this value is fixed during operation, the IOC only reads it on init.
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getPolarity($(ADDR),$(CH)) $(PN)")
+    field(ZNAM, "-")
+    field(ONAM, "+")
+}
+
+record(longin, "Module$(ADDR):Ch$(CH):Status") {
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getStatus($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+    field(FLNK, "Module$(ADDR):Ch$(CH):StatusFanout.PROC PP")
+}
+
+record(fanout, "Module$(ADDR):Ch$(CH):StatusFanout") {
+    # This will trigger processing of all the records listed below
+    field(SCAN, "Passive")
+    field(SELM, "All")
+    field(LNK0, "Module$(ADDR):Ch$(CH):OnOffCalc.PROC PP")
+    field(LNK1, "Module$(ADDR):Ch$(CH):RampUpStatusCalc.PROC PP")
+    field(LNK2, "Module$(ADDR):Ch$(CH):RampDownStatusCalc.PROC PP")
+    field(LNK3, "Module$(ADDR):Ch$(CH):OverCurrentCalc.PROC PP")
+    field(LNK4, "Module$(ADDR):Ch$(CH):OverVoltageCalc.PROC PP")
+    field(LNK5, "Module$(ADDR):Ch$(CH):UnderVoltageCalc.PROC PP")
+    field(LNK6, "Module$(ADDR):Ch$(CH):MaxVoltageProtectionCalc.PROC PP")
+    field(LNK7, "Module$(ADDR):Ch$(CH):TrippedCalc.PROC PP")
+    field(LNK8, "Module$(ADDR):Ch$(CH):OverPowerCalc.PROC PP")
+    field(LNK9, "Module$(ADDR):Ch$(CH):OverTemperatureCalc.PROC PP")
+    field(LNKA, "Module$(ADDR):Ch$(CH):DisabledCalc.PROC PP")
+    field(LNKB, "Module$(ADDR):Ch$(CH):KilledCalc.PROC PP")
+    field(LNKC, "Module$(ADDR):Ch$(CH):InterlockCalc.PROC PP")
+    field(LNKD, "Module$(ADDR):Ch$(CH):CalibrationErrorCalc.PROC PP")
+}

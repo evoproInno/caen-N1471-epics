@@ -1,0 +1,11 @@
+# Copyright (c) 2024 evopro Innovation
+
+file "db/caen-N1471-statusbit.template" {
+	{ R="Channel0Alarm", SOURCE="BoardAlarm", INDEX="0" }
+	{ R="Channel1Alarm", SOURCE="BoardAlarm", INDEX="1" }
+	{ R="Channel2Alarm", SOURCE="BoardAlarm", INDEX="2" }
+	{ R="Channel3Alarm", SOURCE="BoardAlarm", INDEX="3" }
+	{ R="PowerFailAlarm", SOURCE="BoardAlarm", INDEX="4" }
+	{ R="OverPowerAlarm", SOURCE="BoardAlarm", INDEX="5" }
+	{ R="HvClockFailAlarm", SOURCE="BoardAlarm", INDEX="6" }
+}

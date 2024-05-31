@@ -1,0 +1,94 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(stringin, "Module$(ADDR):Name") {
+    field(DESC, "Module name")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getModuleName($(ADDR)) $(PN)")
+    field(PINI, "YES")
+}
+
+record(longin, "Module$(ADDR):NumberOfChannels") {
+    field(DESC, "Number of channels")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getNumberOfChannels($(ADDR)) $(PN)")
+    field(PINI, "YES")
+}
+
+record(stringin, "Module$(ADDR):FirmwareRelease") {
+    field(DESC, "Module firmware release")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getFirmwareRelease($(ADDR)) $(PN)")
+    field(PINI, "YES")
+}
+
+record(stringin, "Module$(ADDR):SerialNumber") {
+    field(DESC, "Module serial number")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getSerialNumber($(ADDR)) $(PN)")
+    field(PINI, "YES")
+}
+
+record(bi, "Module$(ADDR):InterlockStatus") {
+    field(DESC, "Module interlock status")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getInterlockStatus($(ADDR)) $(PN)")
+    field(PINI, "YES")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+}
+
+record(bi, "Module$(ADDR):InterlockMode") {
+    field(DESC, "Module interlock mode")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getInterlockMode($(ADDR)) $(PN)")
+    field(PINI, "YES")
+    field(ZNAM, "OPEN")
+    field(ONAM, "CLOSED")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):SlowTrigger")
+}
+
+record(bi, "Module$(ADDR):ControlMode") {
+    field(DESC, "Module control mode")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getControlMode($(ADDR)) $(PN)")
+    field(PINI, "YES")
+    field(ZNAM, "LOCAL")
+    field(ONAM, "REMOTE")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):SlowTrigger")
+}
+
+record(bi, "Module$(ADDR):LocalBusTermination") {
+    field(DESC, "Module local bus termination")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getLocalBusTermination($(ADDR)) $(PN)")
+    field(PINI, "YES")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(longin, "Module$(ADDR):BoardAlarm") {
+    field(DESC, "Board alarm status")
+    field(DTYP, "stream")
+    field(INP, "@caen-N1471.proto getBoardAlarm($(ADDR)) $(PN)")
+    field(PINI, "YES")
+    field(FLNK, "Module$(ADDR):BoardAlarmFanout.PROC PP")
+    field(SCAN, "Event")
+    field(EVNT, "Module$(ADDR):FastTrigger")
+}
+
+record(fanout, "Module$(ADDR):BoardAlarmFanout") {
+    # This will trigger processing of all the records listed below
+    field(SCAN, "Passive")
+    field(SELM, "All")
+    field(LNK0, "Module$(ADDR):Channel0AlarmCalc.PROC PP")
+    field(LNK1, "Module$(ADDR):Channel1AlarmCalc.PROC PP")
+    field(LNK2, "Module$(ADDR):Channel2AlarmCalc.PROC PP")
+    field(LNK3, "Module$(ADDR):Channel3AlarmCalc.PROC PP")
+    field(LNK4, "Module$(ADDR):PowerFailAlarmCalc.PROC PP")
+    field(LNK5, "Module$(ADDR):OverPowerAlarmCalc.PROC PP")
+    field(LNK6, "Module$(ADDR):HvClockFailAlarmCalc.PROC PP")
+}

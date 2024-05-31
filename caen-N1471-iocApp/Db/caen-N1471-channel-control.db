@@ -1,0 +1,80 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(ao, "Module$(ADDR):Ch$(CH):SetDrivenVoltage") {
+    field(DESC, "Set the voltage for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setDrivenVoltage($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "V")
+    field(DRVL, "0")
+    field(DRVH, "8000")
+}
+
+record(ao, "Module$(ADDR):Ch$(CH):SetDrivenCurrent") {
+    field(DESC, "Set the current for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setDrivenCurrent($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "uA")
+    field(DRVL, "0")
+    field(DRVH, "3000")
+}
+
+record(ao, "Module$(ADDR):Ch$(CH):SetMaxVoltage") {
+    field(DESC, "Set the max voltage for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setMaxVoltage($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "V")
+    field(DRVL, "0")
+    field(DRVH, "8100")
+}
+
+record(ao, "Module$(ADDR):Ch$(CH):SetRampUp") {
+    field(DESC, "Set the ramp up speed for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setRampUp($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "V/s")
+    field(DRVL, "1")
+    field(DRVH, "500")
+}
+
+record(ao, "Module$(ADDR):Ch$(CH):SetRampDown") {
+    field(DESC, "Set the ramp down speed for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setRampDown($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "V/s")
+    field(DRVL, "1")
+    field(DRVH, "500")
+}
+
+record(ao, "Module$(ADDR):Ch$(CH):SetTrip") {
+    field(DESC, "Set the trip time for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setTrip($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(EGU, "s")
+    field(DRVL, "0")
+    field(DRVH, "1000")
+}
+
+record(bo, "Module$(ADDR):Ch$(CH):SetPowerDownMode") {
+    field(DESC, "Set the power down mode for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto setPowerDownMode($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+
+record(bo, "Module$(ADDR):Ch$(CH):TurnOnOff") {
+    field(DESC, "Turn ON/OFF the output for Mdl$(ADDR) Ch$(CH)")
+    field(DTYP, "stream")
+    field(OUT, "@caen-N1471.proto turnOnOff($(ADDR),$(CH)) $(PN)")
+    field(SCAN, "Passive")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+

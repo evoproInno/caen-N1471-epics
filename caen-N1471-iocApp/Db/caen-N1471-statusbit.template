@@ -1,0 +1,15 @@
+# Copyright (c) 2024 evopro Innovation
+
+record(calcout, "Module$(ADDR):$(R)Calc") {
+    field(SCAN, "Passive")
+    field(INPA, "Module$(ADDR):$(SOURCE)")
+    field(CALC, "((A & (1 << $(INDEX))) == 0) ? 0 : 1")
+    field(OUT, "Module$(ADDR):$(R)")
+    field(FLNK, "Module$(ADDR):$(R).PROC PP")
+}
+
+record(bo, "Module$(ADDR):$(R)") {
+    field(SCAN, "Passive")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+}

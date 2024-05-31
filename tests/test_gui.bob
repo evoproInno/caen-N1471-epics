@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-04-17 13:28:51 by root-->
+<display version="2.0.0">
+  <name>CAEN N1471A</name>
+  <width>1060</width>
+  <height>1000</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>CAEN N1471A</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>241</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Module</name>
+    <x>20</x>
+    <y>31</y>
+    <width>880</width>
+    <height>280</height>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_Name</name>
+      <pv_name>Module00:Name</pv_name>
+      <x>192</x>
+      <y>2</y>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_NoCh</name>
+      <pv_name>Module00:NumberOfChannels</pv_name>
+      <x>192</x>
+      <y>22</y>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_Name</name>
+      <text>Name</text>
+      <x>2</x>
+      <y>2</y>
+      <width>180</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_NoCh</name>
+      <text>Number of Channels</text>
+      <x>2</x>
+      <y>22</y>
+      <width>180</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_FwR</name>
+      <pv_name>Module00:FirmwareRelease</pv_name>
+      <x>192</x>
+      <y>42</y>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_FwR</name>
+      <text>Firmware Release</text>
+      <x>2</x>
+      <y>42</y>
+      <width>180</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_SNo</name>
+      <pv_name>Module00:SerialNumber</pv_name>
+      <x>192</x>
+      <y>62</y>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_SNo</name>
+      <text>Serial Number</text>
+      <x>2</x>
+      <y>62</y>
+      <width>180</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_IntStat</name>
+      <pv_name>Module00:InterlockStatus</pv_name>
+      <x>512</x>
+      <y>2</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_IntStat</name>
+      <text>Interlock</text>
+      <x>362</x>
+      <y>2</y>
+      <width>130</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_IntMod</name>
+      <text>Interlock Mode</text>
+      <x>2</x>
+      <y>202</y>
+      <width>150</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_IntMod</name>
+      <pv_name>Module00:InterlockMode</pv_name>
+      <x>192</x>
+      <y>222</y>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_BusTerm</name>
+      <text>Local Bus Termination Status</text>
+      <x>362</x>
+      <y>22</y>
+      <width>140</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_BusTerm</name>
+      <pv_name>Module00:LocalBusTermination</pv_name>
+      <x>512</x>
+      <y>22</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_CtrMod</name>
+      <text>Control Mode</text>
+      <x>622</x>
+      <y>2</y>
+      <width>150</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_CtrMod</name>
+      <pv_name>Module00:ControlMode</pv_name>
+      <x>742</x>
+      <y>2</y>
+      <background_color>
+        <color name="Attention" red="255" green="160" blue="0">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_Alarm</name>
+      <x>622</x>
+      <y>92</y>
+      <width>200</width>
+      <height>1</height>
+      <points>
+        <point x="200.0" y="0.0">
+        </point>
+        <point x="200.0" y="0.0">
+        </point>
+        <point x="130.0" y="0.0">
+        </point>
+        <point x="0.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_Alarm</name>
+      <text>ALARMS</text>
+      <x>622</x>
+      <y>62</y>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="18.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_Ch0_Alarm</name>
+      <text>Channel 0</text>
+      <x>622</x>
+      <y>93</y>
+      <width>130</width>
+      <height>1</height>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_Ch0_alarm</name>
+      <pv_name>Module00:Channel0Alarm</pv_name>
+      <x>772</x>
+      <y>93</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_Ch1_Alarm</name>
+      <text>Channel 1</text>
+      <x>622</x>
+      <y>113</y>
+      <width>130</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_Ch1_alarm</name>
+      <pv_name>Module00:Channel1Alarm</pv_name>
+      <x>772</x>
+      <y>113</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_PowFail_Alarm</name>
+      <text>Power Fail</text>
+      <x>622</x>
+      <y>133</y>
+      <width>130</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_PowFail_Alarm</name>
+      <pv_name>Module00:PowerFailAlarm</pv_name>
+      <x>772</x>
+      <y>133</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_OverPow_Alarm</name>
+      <text>Over Power</text>
+      <x>622</x>
+      <y>153</y>
+      <width>130</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_OverPow_Alarm</name>
+      <pv_name>Module00:OverPowerAlarm</pv_name>
+      <x>772</x>
+      <y>153</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_HVClock_Alarm</name>
+      <text>HV Clock Fail</text>
+      <x>622</x>
+      <y>173</y>
+      <width>130</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_HVClock_Alarm</name>
+      <pv_name>Module00:HvClockFailAlarm</pv_name>
+      <x>772</x>
+      <y>173</y>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Boolean Button_Interlock</name>
+      <pv_name>Module00:SetInterlockMode</pv_name>
+      <x>192</x>
+      <y>192</y>
+      <off_label>OPEN</off_label>
+      <on_label>CLOSED</on_label>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_Clear_Alarm</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>WritePV</description>
+        </action>
+      </actions>
+      <pv_name>Module00:ClearAlarm</pv_name>
+      <text>CLEAR</text>
+      <x>722</x>
+      <y>212</y>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_Ch0</name>
+    <macros>
+      <Ch>0</Ch>
+    </macros>
+    <file>test_ch.bob</file>
+    <x>30</x>
+    <y>321</y>
+    <width>430</width>
+    <height>600</height>
+    <border_width>1</border_width>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_Ch1</name>
+    <macros>
+      <Ch>1</Ch>
+    </macros>
+    <file>test_ch.bob</file>
+    <x>470</x>
+    <y>321</y>
+    <width>420</width>
+    <height>600</height>
+    <border_width>1</border_width>
+  </widget>
+</display>
